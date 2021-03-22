@@ -6,9 +6,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class ReviewsPage extends BasePage {
 
-    private final static String REVIEWS_TITLE_SELECTOR = "new UiSelector().textContains(\"Отзывы\")";
-
-    @AndroidFindBy(uiAutomator = REVIEWS_TITLE_SELECTOR)
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Отзывы\")")
     private AndroidElement reviewsTitle;
 
     @AndroidFindBy(id = "com.joom:id/toolbar_layout")

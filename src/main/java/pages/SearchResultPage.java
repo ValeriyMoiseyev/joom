@@ -1,41 +1,35 @@
 package pages;
 
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static com.google.common.collect.Iterables.isEmpty;
 
 
 public class SearchResultPage extends BasePage {
 
-    private final static String SORTING_SELECTOR = "new UiSelector().text(\"По умолчанию\")";
-    private final static String SORTING_BY_ASCENDING_PRICE_SELECTOR = "new UiSelector().text(\"По возрастающей цене\")";
-    private final static String PRICE_SELECTOR = "new UiSelector().textContains(\"\u20BD\")";
-    private final static String FILTER_SELECTOR = "new UiSelector().text(\"Фильтр\")";
-
-    @AndroidFindBy(uiAutomator = SORTING_SELECTOR)
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"По умолчанию\")")
     private AndroidElement sortingButton;
 
     @AndroidFindBy(id = "com.joom:id/product_view")
     private AndroidElement productCard;
 
-    @AndroidFindBy(uiAutomator = SORTING_BY_ASCENDING_PRICE_SELECTOR)
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"По возрастающей цене\")")
     private AndroidElement sortingByAscendingPriceButton;
 
-    @AndroidFindBy(uiAutomator = PRICE_SELECTOR)
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"£\")")
     private List<AndroidElement> prices;
 
-    @AndroidFindBy(uiAutomator = FILTER_SELECTOR)
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Фильтр\")")
     private AndroidElement filterButton;
 
     @AndroidFindBy(id = "com.joom:id/bottom_sheet_content")
@@ -57,18 +51,31 @@ public class SearchResultPage extends BasePage {
         swipeALittleUp();
     }
 
-    public List<Integer> getPrices() {
+    public List<String> getPrices() {
         List<String> listString = new ArrayList<>();
         for (int i = 0; i < prices.size(); i++) {
             String str = prices.get(i).getText();
-            listString.add(str.substring(0, str.length() - 2));
+            listString.add(str);
         }
-        List<Integer> listInt = new ArrayList<>();
-        for (int i = 0; i < listString.size(); i++) {
-            int price = Integer.parseInt(listString.get(i));
-            listInt.add(price);
+
+        return listString;
+    }
+
+    public static boolean isSorted(List<String> listOfStrings) {
+        if (isEmpty(listOfStrings) || listOfStrings.size() == 1) {
+            return true;
         }
-        return listInt;
+
+        Iterator<String> iter = listOfStrings.iterator();
+        String current, previous = iter.next();
+        while (iter.hasNext()) {
+            current = iter.next();
+            if (previous.compareTo(current) > 0) {
+                return false;
+            }
+            previous = current;
+        }
+        return true;
     }
 
     public void openFilterOptions() {

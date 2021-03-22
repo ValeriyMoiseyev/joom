@@ -10,14 +10,15 @@ public class SelectReviewsTabTest extends BaseTest {
     @Test
     public void selectReviewsTabTest() {
 
-        MainPage mainPage = new MainPage(driver);
-        mainPage.goBack();
+        MainPage mainPage = new MainPage(androidDriver.get());
+//        mainPage.goBack();
+        mainPage.goToShopping();
         mainPage.goToProductCard();
 
-        ProductPage productPage = new ProductPage(driver);
+        ProductPage productPage = new ProductPage(androidDriver.get());
         productPage.openReviews();
 
-        ReviewsPage reviewsPage = new ReviewsPage(driver);
+        ReviewsPage reviewsPage = new ReviewsPage(androidDriver.get());
         assertTrue(reviewsPage.getReviewsTitle().isDisplayed());
         assertTrue(reviewsPage.getReviewsToolbar().isDisplayed());
         assertTrue(reviewsPage.getReviewsToolbar().getSize().height > 0 &&

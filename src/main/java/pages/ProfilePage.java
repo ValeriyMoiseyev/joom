@@ -12,12 +12,19 @@ public class ProfilePage extends BasePage {
     @AndroidFindBy(accessibility = "Главная")
     private AndroidElement mainPageButton;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Избранное\")")
+    private AndroidElement favorites;
+
     public void goToSettings() {
         settingsButton.click();
     }
 
     public void goToMainPage() {
         mainPageButton.click();
+    }
+
+    public void goToFavorites() {
+        favorites.click();
     }
 
     public ProfilePage(AndroidDriver driver) {

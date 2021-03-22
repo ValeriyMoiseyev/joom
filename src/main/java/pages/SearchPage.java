@@ -6,15 +6,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class SearchPage extends BasePage {
 
-    private final static String SEARCH_RESULT_SELECTOR = "new UiSelector().text(\"платья\")";
-
     @AndroidFindBy(id = "com.joom:id/hint")
     private AndroidElement searchFieldHint;
 
     @AndroidFindBy(id = "com.joom:id/input")
     private AndroidElement searchFieldInput;
 
-    @AndroidFindBy(uiAutomator = SEARCH_RESULT_SELECTOR)
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"платья\")")
     private AndroidElement searchResult;
 
     public void searchByText(String text){

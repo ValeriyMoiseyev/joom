@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Parallel tests" parallel="methods" thread-count="2"     verbose="1" >
+    <test name="Parallel Tests" parallel="methods" enabled="true" >
+        <classes>
+            <class name="AddProductToFavoritesTest" />
+            <class name="ChangeCurrencyTest" />
+            <class name="ChangeTabTest" />
+            <class name="OpenDropDownMenuFiltersTest" />
+            <class name="SelectReviewsTabTest" />
+            <class name="SortByAscendingPriceTest" />
+        </classes>
+    </test>
+</suite>

@@ -10,14 +10,15 @@ public class OpenDropDownMenuFiltersTest extends BaseTest {
     @Test
     public void openDropDownMenuFiltersTest() {
 
-        MainPage mainPage = new MainPage(driver);
-        mainPage.goBack();
+        MainPage mainPage = new MainPage(androidDriver.get());
+//        mainPage.goBack();
+        mainPage.goToShopping();
         mainPage.goToSearchPage();
 
-        SearchPage searchPage = new SearchPage(driver);
+        SearchPage searchPage = new SearchPage(androidDriver.get());
         searchPage.searchByText("Платья");
 
-        SearchResultPage searchResultPage = new SearchResultPage(driver);
+        SearchResultPage searchResultPage = new SearchResultPage(androidDriver.get());
         searchResultPage.openFilterOptions();
 
         assertTrue(searchResultPage.getDropDownMenuFilter().isDisplayed());

@@ -9,14 +9,15 @@ public class ChangeCurrencyTest extends BaseTest {
 
     @Test
     public void changeCurrencyTest() {
-        MainPage mainPage = new MainPage(driver);
-        mainPage.goBack();
+        MainPage mainPage = new MainPage(androidDriver.get());
+//        mainPage.goBack();
+        mainPage.goToShopping();
         mainPage.goToProfile();
 
-        ProfilePage profilePage = new ProfilePage(driver);
+        ProfilePage profilePage = new ProfilePage(androidDriver.get());
         profilePage.goToSettings();
 
-        SettingsPage settingsPage = new SettingsPage(driver);
+        SettingsPage settingsPage = new SettingsPage(androidDriver.get());
         settingsPage.openCurrencyList();
         settingsPage.changeCurrencyToUsd();
         settingsPage.goToProfile();

@@ -9,13 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductPage extends BasePage {
 
-    private final static String REVIEWS_SELECTOR = "new UiSelector().textContains(\"Отзывы\")";
-
-    @AndroidFindBy(uiAutomator = REVIEWS_SELECTOR)
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Отзывы\")")
     private AndroidElement reviews;
 
     @AndroidFindBy(id = "com.joom:id/product_info_current_price_label")
     private AndroidElement price;
+
+    @AndroidFindBy(id = "com.joom:id/like_button")
+    private AndroidElement likeButton;
 
     public void openReviews() {
         wait = new WebDriverWait(driver, 10);
@@ -24,6 +25,13 @@ public class ProductPage extends BasePage {
         swipeALittleUp();
         swipeALittleUp();
         reviews.click();
+    }
+
+    public void addToFavorites(){
+        wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.id("com.joom:id/like_button")));
+        likeButton.click();
     }
 
     public ProductPage(AndroidDriver driver) {
