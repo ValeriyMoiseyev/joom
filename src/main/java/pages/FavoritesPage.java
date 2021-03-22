@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FavoritesPage extends BasePage {
 
+    private final static String FEED_SWIPE_REFRESH_SELECTOR = "com.joom:id/feed_swipe_refresh";
+
     @AndroidFindBy(id = "com.joom:id/feed_swipe_refresh")
         private AndroidElement feed;
 
@@ -18,7 +20,7 @@ public class FavoritesPage extends BasePage {
     public void refreshFavorites() {
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.id("com.joom:id/feed_swipe_refresh")));
+                visibilityOfElementLocated(By.id(FEED_SWIPE_REFRESH_SELECTOR)));
         swipeALittleDown();
     }
 

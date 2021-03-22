@@ -15,10 +15,11 @@ import java.time.Duration;
 public abstract class BasePage {
     public AndroidDriver driver;
     public WebDriverWait wait;
+    private final static String BUTTON_TITLE_SELECTOR = "com.joom:id/button_title";
 
     public void goBack() {
         wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.joom:id/button_title")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(BUTTON_TITLE_SELECTOR)));
         driver.navigate().back();
     }
 

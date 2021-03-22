@@ -17,6 +17,8 @@ import static com.google.common.collect.Iterables.isEmpty;
 
 public class SearchResultPage extends BasePage {
 
+    private final static String PRODUCT_VIEW_SELECTOR = "com.joom:id/product_view";
+
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"По умолчанию\")")
     private AndroidElement sortingButton;
 
@@ -40,7 +42,7 @@ public class SearchResultPage extends BasePage {
 
     public void openSortingOptions() {
         wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.joom:id/product_view")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PRODUCT_VIEW_SELECTOR)));
         swipeALittleDown();
         sortingButton.click();
     }
@@ -80,7 +82,7 @@ public class SearchResultPage extends BasePage {
 
     public void openFilterOptions() {
         wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.joom:id/product_view")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PRODUCT_VIEW_SELECTOR)));
         swipeALittleDown();
         filterButton.click();
     }
