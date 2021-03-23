@@ -10,8 +10,7 @@ public class ChangeTabTest extends BaseTest {
     public void changeTabTest() throws InterruptedException {
 
         MainPage mainPage = new MainPage(androidDriver.get());
-//        mainPage.goBack();
-        mainPage.goToShopping();
+        mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.selectMarketsTab();
         assertTrue(mainPage.getMarketsTab().isSelected());
         assertFalse(mainPage.getBestTab().isSelected());

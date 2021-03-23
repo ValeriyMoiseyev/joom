@@ -10,8 +10,7 @@ public class ChangeCurrencyTest extends BaseTest {
     @Test
     public void changeCurrencyTest() {
         MainPage mainPage = new MainPage(androidDriver.get());
-//        mainPage.goBack();
-        mainPage.goToShopping();
+        mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToProfile();
 
         ProfilePage profilePage = new ProfilePage(androidDriver.get());

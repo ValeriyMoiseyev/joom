@@ -12,8 +12,7 @@ public class AddProductToFavoritesTest extends BaseTest {
     public void changeTabTest() {
 
         MainPage mainPage = new MainPage(androidDriver.get());
-//        mainPage.goBack();
-        mainPage.goToShopping();
+        mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToProductCard();
 
         ProductPage productPage = new ProductPage(androidDriver.get());

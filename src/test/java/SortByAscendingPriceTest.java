@@ -14,8 +14,7 @@ public class SortByAscendingPriceTest extends BaseTest {
     @Test
     public void sortByAscendingPriceTest() throws InterruptedException {
         MainPage mainPage = new MainPage(androidDriver.get());
-//        mainPage.goBack();
-        mainPage.goToShopping();
+        mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToSearchPage();
 
         SearchPage searchPage = new SearchPage(androidDriver.get());

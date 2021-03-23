@@ -33,6 +33,9 @@ public class MainPage extends BasePage {
     @AndroidFindBy(accessibility = "Магазины")
     private AndroidElement marketsTab;
 
+    @AndroidFindBy(accessibility = "Закрыть")
+    private AndroidElement closeButton;
+
     public MainPage(AndroidDriver driver) {
         super(driver);
     }
@@ -63,11 +66,47 @@ public class MainPage extends BasePage {
         productCard.click();
     }
 
+    public void goThroughTheRandomActivitiesToMainPage() {
+        try {
+            if (getGoToShoppingButton().isDisplayed()) {
+                goToShopping();
+            }
+        } catch (Exception e) {
+            System.out.println("Can't find element");
+        }
+
+        try {
+            if (getCloseButton().isDisplayed()) {
+                closeStories();
+            }
+        } catch (Exception e) {
+            try {
+                if (getGoToShoppingButton().isDisplayed()) {
+                    goToShopping();
+                }
+            } catch (Exception ex) {
+                System.out.println("Can't find element");
+            }
+        }
+    }
+
+    public void closeStories(){
+        closeButton.click();
+    }
+
     public AndroidElement getBestTab() {
         return bestTab;
     }
 
     public AndroidElement getMarketsTab() {
         return marketsTab;
+    }
+
+    public AndroidElement getCloseButton() {
+        return closeButton;
+    }
+
+    public AndroidElement getGoToShoppingButton() {
+        return goToShoppingButton;
     }
 }

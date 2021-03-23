@@ -11,8 +11,7 @@ public class OpenDropDownMenuFiltersTest extends BaseTest {
     public void openDropDownMenuFiltersTest() {
 
         MainPage mainPage = new MainPage(androidDriver.get());
-//        mainPage.goBack();
-        mainPage.goToShopping();
+        mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToSearchPage();
 
         SearchPage searchPage = new SearchPage(androidDriver.get());

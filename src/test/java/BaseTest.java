@@ -8,8 +8,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public abstract class BaseTest {
-    private WebDriverWait wait;
 
+    private WebDriverWait wait;
     public ThreadLocal<AndroidDriver> androidDriver = new ThreadLocal<AndroidDriver>();
     private ThreadLocal<String> sessionId = new ThreadLocal<>();
 
@@ -18,7 +18,7 @@ public abstract class BaseTest {
     }
 
     @BeforeMethod
-    public void setup() {
+    public void setup() throws MalformedURLException {
 
         DesiredCapabilities caps = DesiredCapabilities.android();
         caps.setCapability("appiumVersion", "1.20.2");
@@ -41,7 +41,7 @@ public abstract class BaseTest {
             throw new RuntimeException(e);
         }
         sessionId.set(((AndroidDriver)androidDriver.get()).getSessionId().toString());
-    }
+
 //        for local testing
 //        DesiredCapabilities caps = new DesiredCapabilities();
 //        caps.setCapability("deviceName", "pixel_3");
@@ -53,6 +53,7 @@ public abstract class BaseTest {
 //        caps.setCapability("appActivity", "com.joom.ui.main.MainActivity");
 //        caps.setCapability("noReset", "false");
 //        driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+    }
 
     @AfterMethod
     public void teardown() {
