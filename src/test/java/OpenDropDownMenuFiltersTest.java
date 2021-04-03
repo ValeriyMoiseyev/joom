@@ -7,9 +7,8 @@ import static org.testng.Assert.assertTrue;
 
 public class OpenDropDownMenuFiltersTest extends BaseTest {
 
-    @Test
+    @Test (description="Отображение выпадающего меню с фильтрами")
     public void openDropDownMenuFiltersTest() {
-
         MainPage mainPage = new MainPage(androidDriver.get());
         mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToSearchPage();

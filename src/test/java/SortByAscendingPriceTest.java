@@ -6,12 +6,12 @@ import pages.SearchResultPage;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
-import static pages.SearchResultPage.isSorted;
+import static utils.Helper.isSorted;
 
 
 public class SortByAscendingPriceTest extends BaseTest {
 
-    @Test
+    @Test (description="Сортировка по возрастанию цены")
     public void sortByAscendingPriceTest() throws InterruptedException {
         MainPage mainPage = new MainPage(androidDriver.get());
         mainPage.goThroughTheRandomActivitiesToMainPage();

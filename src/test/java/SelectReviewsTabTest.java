@@ -7,9 +7,8 @@ import static org.testng.Assert.assertTrue;
 
 public class SelectReviewsTabTest extends BaseTest {
 
-    @Test
+    @Test (description="Отображение экрана \"Отзывы\"")
     public void selectReviewsTabTest() {
-
         MainPage mainPage = new MainPage(androidDriver.get());
         mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToProductCard();
@@ -22,7 +21,5 @@ public class SelectReviewsTabTest extends BaseTest {
         assertTrue(reviewsPage.getReviewsToolbar().isDisplayed());
         assertTrue(reviewsPage.getReviewsToolbar().getSize().height > 0 &&
                 reviewsPage.getReviewsToolbar().getSize().width > 0);
-        System.out.println(reviewsPage.getReviewsToolbar().getSize().height + " x " +
-                reviewsPage.getReviewsToolbar().getSize().width);
     }
 }

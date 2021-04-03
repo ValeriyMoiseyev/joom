@@ -6,13 +6,11 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Swipe;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import static com.google.common.collect.Iterables.isEmpty;
 
 
 public class SearchResultPage extends BasePage {
@@ -43,14 +41,16 @@ public class SearchResultPage extends BasePage {
     public void openSortingOptions() {
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PRODUCT_VIEW_SELECTOR)));
-        swipeALittleDown();
+        Swipe swipe = new Swipe();
+        swipe.swipeALittleDown(driver);
         sortingButton.click();
     }
 
     public void sortByAscendingPrice() throws InterruptedException {
         sortingByAscendingPriceButton.click();
         TimeUnit.SECONDS.sleep(3);
-        swipeALittleUp();
+        Swipe swipe = new Swipe();
+        swipe.swipeALittleUp(driver);
     }
 
     public List<String> getPrices() {
@@ -63,27 +63,11 @@ public class SearchResultPage extends BasePage {
         return listString;
     }
 
-    public static boolean isSorted(List<String> listOfStrings) {
-        if (isEmpty(listOfStrings) || listOfStrings.size() == 1) {
-            return true;
-        }
-
-        Iterator<String> iter = listOfStrings.iterator();
-        String current, previous = iter.next();
-        while (iter.hasNext()) {
-            current = iter.next();
-            if (previous.compareTo(current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
-    }
-
     public void openFilterOptions() {
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PRODUCT_VIEW_SELECTOR)));
-        swipeALittleDown();
+        Swipe swipe = new Swipe();
+        swipe.swipeALittleDown(driver);
         filterButton.click();
     }
 

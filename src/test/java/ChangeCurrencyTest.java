@@ -7,8 +7,8 @@ import static org.testng.Assert.assertTrue;
 
 public class ChangeCurrencyTest extends BaseTest {
 
-    @Test
-    public void changeCurrencyTest() {
+    @Test (description="Выбор валюты")
+    public void changeCurrencyTest() throws InterruptedException {
         MainPage mainPage = new MainPage(androidDriver.get());
         mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToProfile();
@@ -22,10 +22,7 @@ public class ChangeCurrencyTest extends BaseTest {
         settingsPage.goToProfile();
 
         profilePage.goToMainPage();
-
         String price = mainPage.getPrice();
-
         assertTrue(price.contains("$"));
-        System.out.println(price);
     }
 }

@@ -3,22 +3,23 @@ package pages;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import utils.Swipe;
 
 import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage {
 
-    @AndroidFindBy(id = "com.joom:id/button_title")
-    private AndroidElement goToShoppingButton;
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Подтверждаю\")")
+    private AndroidElement submitButton;
 
     @AndroidFindBy(accessibility = "Профиль")
     private AndroidElement profileButton;
 
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget" +
-            ".LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android" +
-            ".widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget" +
-            ".FrameLayout[2]/android.view.ViewGroup/android.widget.FrameLayout/X9/android.view.ViewGroup/androidx" +
-            ".recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget." +
+            "FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android." +
+            "widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.view.ViewGroup/" +
+            "android.widget.FrameLayout/X9/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android." +
+            "view.ViewGroup[1]/android.widget.TextView")
     private AndroidElement productPrice;
 
     @AndroidFindBy(accessibility = "Поиск")
@@ -36,6 +37,18 @@ public class MainPage extends BasePage {
     @AndroidFindBy(accessibility = "Закрыть")
     private AndroidElement closeButton;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Смотреть товар\")")
+    private AndroidElement watchProductButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Узнать больше\")")
+    private AndroidElement knowMoreButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Спасибо, понятно!\")")
+    private AndroidElement understoodButton;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Перейти к покупкам\")")
+    private AndroidElement goToShoppingButton;
+
     public MainPage(AndroidDriver driver) {
         super(driver);
     }
@@ -44,8 +57,8 @@ public class MainPage extends BasePage {
         profileButton.click();
     }
 
-    public void goToShopping() {
-        goToShoppingButton.click();
+    public void submit() {
+        submitButton.click();
     }
 
     public String getPrice() {
@@ -58,18 +71,23 @@ public class MainPage extends BasePage {
     }
 
     public void selectMarketsTab() throws InterruptedException {
+        Swipe swipe = new Swipe();
         TimeUnit.SECONDS.sleep(2);
-        swipeALittleRight();
+        swipe.swipeALittleRight(driver);
     }
 
     public void goToProductCard() {
         productCard.click();
     }
 
+    public void goToShopping() {
+        goToShoppingButton.click();
+    }
+
     public void goThroughTheRandomActivitiesToMainPage() {
         try {
-            if (getGoToShoppingButton().isDisplayed()) {
-                goToShopping();
+            if (getSubmitButton().isDisplayed()) {
+                submit();
             }
         } catch (Exception e) {
             System.out.println("Can't find element");
@@ -80,14 +98,49 @@ public class MainPage extends BasePage {
                 closeStories();
             }
         } catch (Exception e) {
-            try {
-                if (getGoToShoppingButton().isDisplayed()) {
-                    goToShopping();
-                }
-            } catch (Exception ex) {
                 System.out.println("Can't find element");
-            }
         }
+
+        try {
+            if (watchProductButton.isDisplayed()) {
+                goBack();
+            }
+        } catch (Exception e) {
+            System.out.println("Can't find element");
+        }
+
+        try {
+            if (knowMoreButton.isDisplayed()) {
+                goBack();
+            }
+        } catch (Exception e) {
+            System.out.println("Can't find element");
+        }
+
+        try {
+            if (understoodButton.isDisplayed()) {
+                goBack();
+            }
+        } catch (Exception e) {
+            System.out.println("Can't find element");
+        }
+
+        try {
+            if (knowMoreButton.isDisplayed()) {
+                goBack();
+            }
+        } catch (Exception e) {
+            System.out.println("Can't find element");
+        }
+
+        try {
+            if (goToShoppingButton.isDisplayed()) {
+                goToShopping();
+            }
+        } catch (Exception e) {
+            System.out.println("Can't find element");
+        }
+
     }
 
     public void closeStories(){
@@ -104,6 +157,10 @@ public class MainPage extends BasePage {
 
     public AndroidElement getCloseButton() {
         return closeButton;
+    }
+
+    public AndroidElement getSubmitButton() {
+        return submitButton;
     }
 
     public AndroidElement getGoToShoppingButton() {

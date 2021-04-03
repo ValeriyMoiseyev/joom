@@ -8,7 +8,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public abstract class BaseTest {
-
     private WebDriverWait wait;
     public ThreadLocal<AndroidDriver> androidDriver = new ThreadLocal<AndroidDriver>();
     private ThreadLocal<String> sessionId = new ThreadLocal<>();
@@ -19,15 +18,14 @@ public abstract class BaseTest {
 
     @BeforeMethod
     public void setup() throws MalformedURLException {
-
         DesiredCapabilities caps = DesiredCapabilities.android();
         caps.setCapability("appiumVersion", "1.20.2");
-        caps.setCapability("deviceName","Google Pixel 3 GoogleAPI Emulator");
+        caps.setCapability("deviceName","emulator-5554");
         caps.setCapability("deviceOrientation", "portrait");
         caps.setCapability("browserName", "");
         caps.setCapability("platformVersion","9.0");
         caps.setCapability("platformName","Android");
-        caps.setCapability("app","storage:filename=Joom Shopping for every day_v3.64.0_apkpure.com.apk");
+        caps.setCapability("app","/opt/Joom Shopping for every day_v3.64.0_apkpure.com.apk");
         caps.setCapability("skipUnlock", "true");
         caps.setCapability("appPackage", "com.joom");
         caps.setCapability("appActivity", "com.joom.ui.main.MainActivity");
@@ -36,23 +34,11 @@ public abstract class BaseTest {
         caps.setCapability("locale", "RU");
 
         try {
-            androidDriver.set(new AndroidDriver(new URL("https://valeriy.moiseev:26bc42e6-8922-4479-b3e9-39c201593c40@ondemand.eu-central-1.saucelabs.com:443/wd/hub"), caps));
+            androidDriver.set(new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
         sessionId.set(((AndroidDriver)androidDriver.get()).getSessionId().toString());
-
-//        for local testing
-//        DesiredCapabilities caps = new DesiredCapabilities();
-//        caps.setCapability("deviceName", "pixel_3");
-//        caps.setCapability("udid", "emulator-5554"); //DeviceId from "adb devices" command
-//        caps.setCapability("platformName", "Android");
-//        caps.setCapability("platformVersion", "9.0");
-//        caps.setCapability("skipUnlock", "true");
-//        caps.setCapability("appPackage", "com.joom");
-//        caps.setCapability("appActivity", "com.joom.ui.main.MainActivity");
-//        caps.setCapability("noReset", "false");
-//        driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
     }
 
     @AfterMethod

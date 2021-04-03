@@ -6,6 +6,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Swipe;
 
 public class ProductPage extends BasePage {
 
@@ -25,8 +26,9 @@ public class ProductPage extends BasePage {
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.
                 visibilityOfElementLocated(By.id(CURRENT_PRICE_SELECTOR)));
-        swipeALittleUp();
-        swipeALittleUp();
+        Swipe swipe = new Swipe();
+        swipe.swipeALittleUp(driver);
+        swipe.swipeALittleUp(driver);
         reviews.click();
     }
 

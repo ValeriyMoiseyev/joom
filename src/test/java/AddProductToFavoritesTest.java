@@ -8,9 +8,8 @@ import static org.testng.Assert.assertTrue;
 
 public class AddProductToFavoritesTest extends BaseTest {
 
-    @Test
+    @Test (description="Добавление в избранное")
     public void changeTabTest() {
-
         MainPage mainPage = new MainPage(androidDriver.get());
         mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.goToProductCard();

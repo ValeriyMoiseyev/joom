@@ -6,9 +6,8 @@ import static org.testng.Assert.assertTrue;
 
 public class ChangeTabTest extends BaseTest {
 
-    @Test
+    @Test (description="Смена вкладки")
     public void changeTabTest() throws InterruptedException {
-
         MainPage mainPage = new MainPage(androidDriver.get());
         mainPage.goThroughTheRandomActivitiesToMainPage();
         mainPage.selectMarketsTab();

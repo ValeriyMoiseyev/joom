@@ -19,8 +19,9 @@ public class ProfilePage extends BasePage {
         settingsButton.click();
     }
 
-    public void goToMainPage() {
+    public void goToMainPage() throws InterruptedException {
         mainPageButton.click();
+        Thread.sleep(200);
     }
 
     public void goToFavorites() {
