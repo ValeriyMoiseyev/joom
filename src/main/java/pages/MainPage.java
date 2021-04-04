@@ -90,7 +90,6 @@ public class MainPage extends BasePage {
                 submit();
             }
         } catch (Exception e) {
-            System.out.println("Can't find element");
         }
 
         try {
@@ -98,7 +97,6 @@ public class MainPage extends BasePage {
                 closeStories();
             }
         } catch (Exception e) {
-                System.out.println("Can't find element");
         }
 
         try {
@@ -106,7 +104,6 @@ public class MainPage extends BasePage {
                 goBack();
             }
         } catch (Exception e) {
-            System.out.println("Can't find element");
         }
 
         try {
@@ -114,7 +111,6 @@ public class MainPage extends BasePage {
                 goBack();
             }
         } catch (Exception e) {
-            System.out.println("Can't find element");
         }
 
         try {
@@ -122,7 +118,6 @@ public class MainPage extends BasePage {
                 goBack();
             }
         } catch (Exception e) {
-            System.out.println("Can't find element");
         }
 
         try {
@@ -130,7 +125,6 @@ public class MainPage extends BasePage {
                 goBack();
             }
         } catch (Exception e) {
-            System.out.println("Can't find element");
         }
 
         try {
@@ -138,7 +132,6 @@ public class MainPage extends BasePage {
                 goToShopping();
             }
         } catch (Exception e) {
-            System.out.println("Can't find element");
         }
 
     }

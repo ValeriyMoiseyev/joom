@@ -1,3 +1,4 @@
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.MainPage;
 import pages.ProfilePage;
@@ -7,6 +8,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ChangeCurrencyTest extends BaseTest {
 
+    @Ignore
     @Test (description="Выбор валюты")
     public void changeCurrencyTest() throws InterruptedException {
         MainPage mainPage = new MainPage(androidDriver.get());
