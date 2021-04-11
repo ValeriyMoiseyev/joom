@@ -4,9 +4,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.Swipe;
 
 public class ProductPage extends BasePage {
 
@@ -23,19 +20,14 @@ public class ProductPage extends BasePage {
     private AndroidElement likeButton;
 
     public void openReviews() {
-        wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.id(CURRENT_PRICE_SELECTOR)));
-        Swipe swipe = new Swipe();
+        waiters.waitElement(By.id(CURRENT_PRICE_SELECTOR), driver, wait);
         swipe.swipeALittleUp(driver);
         swipe.swipeALittleUp(driver);
         reviews.click();
     }
 
     public void addToFavorites(){
-        wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.id(LIKE_BUTTON_SELECTOR)));
+        waiters.waitElement(By.id(LIKE_BUTTON_SELECTOR), driver, wait);
         likeButton.click();
     }
 

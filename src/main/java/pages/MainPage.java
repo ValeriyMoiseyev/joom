@@ -3,9 +3,9 @@ package pages;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import utils.Swipe;
-
 import java.util.concurrent.TimeUnit;
+
+import static utils.Helper.checkActivity;
 
 public class MainPage extends BasePage {
 
@@ -71,7 +71,6 @@ public class MainPage extends BasePage {
     }
 
     public void selectMarketsTab() throws InterruptedException {
-        Swipe swipe = new Swipe();
         TimeUnit.SECONDS.sleep(2);
         swipe.swipeALittleRight(driver);
     }
@@ -85,55 +84,33 @@ public class MainPage extends BasePage {
     }
 
     public void goThroughTheRandomActivitiesToMainPage() {
-        try {
-            if (getSubmitButton().isDisplayed()) {
+        if (checkActivity(submitButton)) {
                 submit();
             }
-        } catch (Exception e) {
-        }
 
-        try {
-            if (getCloseButton().isDisplayed()) {
+        if (checkActivity(closeButton)) {
                 closeStories();
             }
-        } catch (Exception e) {
-        }
 
-        try {
-            if (watchProductButton.isDisplayed()) {
+        if (checkActivity(watchProductButton)) {
                 goBack();
             }
-        } catch (Exception e) {
-        }
 
-        try {
-            if (knowMoreButton.isDisplayed()) {
+        if (checkActivity(knowMoreButton)) {
                 goBack();
             }
-        } catch (Exception e) {
-        }
 
-        try {
-            if (understoodButton.isDisplayed()) {
+        if (checkActivity(understoodButton)) {
                 goBack();
             }
-        } catch (Exception e) {
-        }
 
-        try {
-            if (knowMoreButton.isDisplayed()) {
+        if (checkActivity(knowMoreButton)) {
                 goBack();
             }
-        } catch (Exception e) {
-        }
 
-        try {
-            if (goToShoppingButton.isDisplayed()) {
+        if (checkActivity(goToShoppingButton)) {
                 goToShopping();
             }
-        } catch (Exception e) {
-        }
-
     }
 
     public void closeStories(){

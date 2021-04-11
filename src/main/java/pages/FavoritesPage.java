@@ -4,9 +4,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.Swipe;
 
 public class FavoritesPage extends BasePage {
 
@@ -19,10 +16,7 @@ public class FavoritesPage extends BasePage {
     private AndroidElement productCard;
 
     public void refreshFavorites() {
-        wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.id(FEED_SWIPE_REFRESH_SELECTOR)));
-        Swipe swipe = new Swipe();
+        waiters.waitElement(By.id(FEED_SWIPE_REFRESH_SELECTOR), driver, wait);
         swipe.swipeALittleDown(driver);
     }
 

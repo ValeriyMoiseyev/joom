@@ -4,9 +4,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.Swipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +36,7 @@ public class SearchResultPage extends BasePage {
     private AndroidElement dropDownMenuFilterTitle;
 
     public void openSortingOptions() {
-        wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PRODUCT_VIEW_SELECTOR)));
-        Swipe swipe = new Swipe();
+        waiters.waitElement(By.id(PRODUCT_VIEW_SELECTOR), driver, wait);
         swipe.swipeALittleDown(driver);
         sortingButton.click();
     }
@@ -49,7 +44,6 @@ public class SearchResultPage extends BasePage {
     public void sortByAscendingPrice() throws InterruptedException {
         sortingByAscendingPriceButton.click();
         TimeUnit.SECONDS.sleep(3);
-        Swipe swipe = new Swipe();
         swipe.swipeALittleUp(driver);
     }
 
@@ -59,14 +53,11 @@ public class SearchResultPage extends BasePage {
             String str = prices.get(i).getText();
             listString.add(str);
         }
-
         return listString;
     }
 
     public void openFilterOptions() {
-        wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PRODUCT_VIEW_SELECTOR)));
-        Swipe swipe = new Swipe();
+        waiters.waitElement(By.id(PRODUCT_VIEW_SELECTOR), driver, wait);
         swipe.swipeALittleDown(driver);
         filterButton.click();
     }
