@@ -5,7 +5,7 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import java.util.concurrent.TimeUnit;
 
-import static utils.Helper.checkActivity;
+import static utils.Helper.elementIsDisplayed;
 
 public class MainPage extends BasePage {
 
@@ -84,31 +84,31 @@ public class MainPage extends BasePage {
     }
 
     public void goThroughTheRandomActivitiesToMainPage() {
-        if (checkActivity(submitButton)) {
+        if (elementIsDisplayed(submitButton)) {
                 submit();
             }
 
-        if (checkActivity(closeButton)) {
+        if (elementIsDisplayed(closeButton)) {
                 closeStories();
             }
 
-        if (checkActivity(watchProductButton)) {
+        if (elementIsDisplayed(watchProductButton)) {
                 goBack();
             }
 
-        if (checkActivity(knowMoreButton)) {
+        if (elementIsDisplayed(knowMoreButton)) {
                 goBack();
             }
 
-        if (checkActivity(understoodButton)) {
+        if (elementIsDisplayed(understoodButton)) {
                 goBack();
             }
 
-        if (checkActivity(knowMoreButton)) {
+        if (elementIsDisplayed(knowMoreButton)) {
                 goBack();
             }
 
-        if (checkActivity(goToShoppingButton)) {
+        if (elementIsDisplayed(goToShoppingButton)) {
                 goToShopping();
             }
     }

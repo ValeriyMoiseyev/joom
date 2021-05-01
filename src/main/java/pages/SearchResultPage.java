@@ -36,7 +36,7 @@ public class SearchResultPage extends BasePage {
     private AndroidElement dropDownMenuFilterTitle;
 
     public void openSortingOptions() {
-        waiters.waitElement(By.id(PRODUCT_VIEW_SELECTOR), driver, wait);
+        waiters.waitElement(By.id(PRODUCT_VIEW_SELECTOR), driver);
         swipe.swipeALittleDown(driver);
         sortingButton.click();
     }
@@ -57,7 +57,7 @@ public class SearchResultPage extends BasePage {
     }
 
     public void openFilterOptions() {
-        waiters.waitElement(By.id(PRODUCT_VIEW_SELECTOR), driver, wait);
+        waiters.waitElement(By.id(PRODUCT_VIEW_SELECTOR), driver);
         swipe.swipeALittleDown(driver);
         filterButton.click();
     }

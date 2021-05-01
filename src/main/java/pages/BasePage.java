@@ -17,7 +17,7 @@ public abstract class BasePage {
     private final static String BUTTON_TITLE_SELECTOR = "com.joom:id/button_title";
 
     public void goBack() {
-        waiters.waitElement(By.id(BUTTON_TITLE_SELECTOR), driver, wait);
+        waiters.waitElement(By.id(BUTTON_TITLE_SELECTOR), driver);
         driver.navigate().back();
     }
 

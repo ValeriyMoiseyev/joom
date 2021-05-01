@@ -16,7 +16,7 @@ public class FavoritesPage extends BasePage {
     private AndroidElement productCard;
 
     public void refreshFavorites() {
-        waiters.waitElement(By.id(FEED_SWIPE_REFRESH_SELECTOR), driver, wait);
+        waiters.waitElement(By.id(FEED_SWIPE_REFRESH_SELECTOR), driver);
         swipe.swipeALittleDown(driver);
     }
 

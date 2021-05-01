@@ -10,16 +10,15 @@ public class Helper {
         return Ordering.<String>natural().isOrdered(listOfStrings);
     }
 
-    public static boolean checkActivity(AndroidElement element) {
-        Boolean res = null;
+    public static boolean elementIsDisplayed(AndroidElement element) {
         try {
             if (element.isDisplayed()) {
-                res = true;
+                System.out.println("Element is displayed");
             }
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            res = false;
+            return false;
         }
-        return res;
     }
 }

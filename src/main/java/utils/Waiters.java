@@ -6,8 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Waiters {
-    public void waitElement(By by, AndroidDriver driver, WebDriverWait wait) {
-        wait = new WebDriverWait(driver, 10);
+    public void waitElement(By by, AndroidDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 }

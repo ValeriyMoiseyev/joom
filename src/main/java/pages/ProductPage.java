@@ -20,14 +20,14 @@ public class ProductPage extends BasePage {
     private AndroidElement likeButton;
 
     public void openReviews() {
-        waiters.waitElement(By.id(CURRENT_PRICE_SELECTOR), driver, wait);
+        waiters.waitElement(By.id(CURRENT_PRICE_SELECTOR), driver);
         swipe.swipeALittleUp(driver);
         swipe.swipeALittleUp(driver);
         reviews.click();
     }
 
     public void addToFavorites(){
-        waiters.waitElement(By.id(LIKE_BUTTON_SELECTOR), driver, wait);
+        waiters.waitElement(By.id(LIKE_BUTTON_SELECTOR), driver);
         likeButton.click();
     }
 
